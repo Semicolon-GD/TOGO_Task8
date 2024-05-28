@@ -16,6 +16,7 @@ public static class EventManager
         if (!_eventTable.ContainsKey(eventName))
             _eventTable[eventName] = action;
         else _eventTable[eventName] += action;
+      //  Debug.Log("Subscribed to "+eventName+" event.");
     }
     
     public static void Unsubscribe(EventList eventName, Action action)
