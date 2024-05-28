@@ -5,12 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3e7c08fe-dbfa-49f6-9b36-305aa617b9f2" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Controllers/PlayerController.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TOGO_Task8/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TOGO_Task8/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Data/Enums/EventList.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Data/Enums/EventList.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/EventManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/EventManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Managers/InputManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Managers/InputManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +102,7 @@
       <workItem from="1716880959572" duration="646000" />
       <workItem from="1716881626271" duration="31000" />
       <workItem from="1716881665926" duration="509000" />
-      <workItem from="1716882202182" duration="2587000" />
+      <workItem from="1716882202182" duration="6572000" />
     </task>
     <servers />
   </component>
