@@ -32,20 +32,20 @@ namespace Managers
 
         private void OnHoldActionCanceled(InputAction.CallbackContext ctx)
         {
-            Debug.Log("Hold Action Canceled "+ctx);
+           // Debug.Log("Hold Action Canceled "+ctx);
             EventManager.Trigger(EventList.OnScreenRelease);
             
         }
 
         private void OnHoldActionPerformed(InputAction.CallbackContext ctx)
         {
-            Debug.Log("Hold Action Performed " + ctx);
+         //   Debug.Log("Hold Action Performed " + ctx);
             EventManager.Trigger(EventList.OnScreenHold);
         }
 
         private void OnHoldActionStarted( InputAction.CallbackContext context)
         {
-            Debug.Log("Hold Action Started " + context);
+          //  Debug.Log("Hold Action Started " + context);
            
         }
     }
