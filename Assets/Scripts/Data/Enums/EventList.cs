@@ -6,5 +6,9 @@ public enum EventList
 {
     GameStarted,
     OnScreenHold,
-    OnScreenRelease
+    OnScreenRelease,
+    OnCollectiblePickUp,
+    PlayerInDoughDrop,
+    PlayerLeftBreadPickup,
+    PlayerInBreadPickup
 }

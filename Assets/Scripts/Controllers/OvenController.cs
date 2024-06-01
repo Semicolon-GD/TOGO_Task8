@@ -1,3 +1,4 @@
+using System;
 using Interfaces;
 using UnityEngine;
 
@@ -5,16 +6,19 @@ namespace Controllers
 {
     public class OvenController : MonoBehaviour ,IStation
     {
-        // Start is called before the first frame update
-        void Start()
+        private void OnEnable()
         {
-        
+            /*EventManager.Subscribe(EventList.PlayerInBreadPickup, GivePlayerBread);
+            EventManager.Subscribe(EventList.PlayerLeftBreadPickup, StopGivingBread);
+            EventManager.Subscribe(EventList.PlayerInDoughDrop,TakeDoughFromPlayer);*/
+            
         }
 
-        // Update is called once per frame
-        void Update()
+        private void OnDisable()
         {
-        
+            /*EventManager.Unsubscribe(EventList.PlayerInBreadPickup, GivePlayerBread);
+            EventManager.Unsubscribe(EventList.PlayerLeftBreadPickup, StopGivingBread);
+            EventManager.Unsubscribe(EventList.PlayerInDoughDrop,TakeDoughFromPlayer);*/
         }
 
         public void HandlePlayerInteraction(PlayerController player)

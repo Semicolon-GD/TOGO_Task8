@@ -59,21 +59,18 @@ public class PoolManager : MonoBehaviour
 
         if (poolDictionary == null)
         {
-            Debug.LogError("Pool Dictionary is null");
             return null;
         }
 
         
         if (!poolDictionary.ContainsKey(tag))
         {
-            Debug.LogWarning("Pool with tag " + tag + " doesn't exist.");
             return null;
         }
         
 
         if (poolDictionary[tag].Count == 0)
         {
-            Debug.LogWarning("Pool with tag " + tag + " is empty.");
             return null;
         }
 
@@ -82,10 +79,9 @@ public class PoolManager : MonoBehaviour
 
         GameObject objectToSpawn = poolDictionary[tag].Dequeue();
         objectToSpawn.SetActive(true);
-        objectToSpawn.transform.position = position;
-        objectToSpawn.transform.rotation = rotation;
-       // objectToSpawn.transform.SetParent(parent);
-        
+        objectToSpawn.transform.SetParent(parent);
+        objectToSpawn.transform.localPosition = position;
+        objectToSpawn.transform.localRotation = rotation;
         return objectToSpawn;
     }
 

@@ -11,7 +11,7 @@ namespace Controllers
         
         private PoolManager _poolManager;
         private Coroutine _doughMachineCoroutine;
-        private Vector3 _spawnPosition;
+        private float _spawnPosition = 0f;
         
         private void Awake()
         {
@@ -33,16 +33,11 @@ namespace Controllers
         {
             Debug.Log("Dough Machine Triggered");
             if (!other.CompareTag("Player")) return;
-            if (_doughMachineCoroutine == null)
+            if (_doughMachineCoroutine != null) return;
+            PlayerCollectibleManager player = other.GetComponent<PlayerCollectibleManager>();
+            if (player != null)
             {
-                PlayerCollectibleManager player = other.GetComponent<PlayerCollectibleManager>();
-                if (player != null)
-                {
-                    
-                    _spawnPosition=player.collectibleParent.position+Vector3.up*2f;
-                    _doughMachineCoroutine = StartCoroutine(GiveDoughPlayerContinuously(player));
-                }
-                
+                _doughMachineCoroutine = StartCoroutine(GiveDoughPlayerContinuously(player));
             }
         }
 
@@ -53,6 +48,7 @@ namespace Controllers
             {
                 StopCoroutine(_doughMachineCoroutine);
                 _doughMachineCoroutine = null;
+                _spawnPosition=0f;
             }
         }
         
@@ -66,15 +62,20 @@ namespace Controllers
                     player.state=PlayerState.CarryingDough;
                     GiveDougToPlayer(player);
                 }
+                else
+                {
+                    Debug.Log("Player is carrying bread or cannot carry more");
+                    
+                }
                 yield return new WaitForSeconds(1f);
             }
         }
         
         private void GiveDougToPlayer(PlayerCollectibleManager player)
         {
-            Debug.Log(_spawnPosition);
-            GameObject dough=_poolManager.SpawnFromPool("Dough", player.collectibleParent , player.collectibleParent.position, player.collectibleParent.transform.rotation);
-            _spawnPosition+=Vector3.up*2f;
+            GameObject dough=_poolManager.SpawnFromPool("Dough", player.collectibleParent , new Vector3(0,_spawnPosition,0), player.collectibleParent.transform.rotation);
+            _spawnPosition+= 0.03f;
+            EventManager.Trigger(EventList.OnCollectiblePickUp);
         }
 
         public void HandlePlayerInteraction(PlayerController player)
