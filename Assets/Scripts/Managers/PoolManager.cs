@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[DefaultExecutionOrder(-100)]
 public class PoolManager : MonoBehaviour
 {
     public static PoolManager Instance;
@@ -19,7 +20,15 @@ public class PoolManager : MonoBehaviour
 
     private void Awake()
     {
-        Instance = this;
+        if (Instance == null)
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject); 
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void Start()
@@ -33,30 +42,56 @@ public class PoolManager : MonoBehaviour
             for (int i = 0; i < pool.size; i++)
             {
                 GameObject obj = Instantiate(pool.prefab);
+                obj.name = pool.tag;
                 obj.SetActive(false);
                 objectPool.Enqueue(obj);
             }
 
             poolDictionary.Add(pool.tag, objectPool);
         }
+
+        Debug.Log(poolDictionary.Count + " pools created.");
     }
 
-    public GameObject SpawnFromPool(string tag, Vector3 position, Quaternion rotation)
+    public GameObject SpawnFromPool(string tag, Transform parent,Vector3 position, Quaternion rotation)
     {
+        #region Checks
+
+        if (poolDictionary == null)
+        {
+            Debug.LogError("Pool Dictionary is null");
+            return null;
+        }
+
+        
         if (!poolDictionary.ContainsKey(tag))
         {
             Debug.LogWarning("Pool with tag " + tag + " doesn't exist.");
             return null;
         }
+        
+
+        if (poolDictionary[tag].Count == 0)
+        {
+            Debug.LogWarning("Pool with tag " + tag + " is empty.");
+            return null;
+        }
+
+        #endregion
+        
 
         GameObject objectToSpawn = poolDictionary[tag].Dequeue();
-
         objectToSpawn.SetActive(true);
         objectToSpawn.transform.position = position;
         objectToSpawn.transform.rotation = rotation;
-
-        poolDictionary[tag].Enqueue(objectToSpawn);
-
+       // objectToSpawn.transform.SetParent(parent);
+        
         return objectToSpawn;
+    }
+
+    public void ReturnToPool(GameObject objectToReturn)
+    {
+        objectToReturn.SetActive(false);
+        poolDictionary[objectToReturn.tag].Enqueue(objectToReturn);
     }
 }

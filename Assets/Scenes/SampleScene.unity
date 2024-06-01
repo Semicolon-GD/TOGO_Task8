@@ -159,6 +159,37 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!1 &357683507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 357683508}
+  m_Layer: 0
+  m_Name: CollectibleParent
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &357683508
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 357683507}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.053, y: 1.41, z: 0.506}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1140588894}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &359720448
 GameObject:
   m_ObjectHideFlags: 0
@@ -748,6 +779,7 @@ GameObject:
   - component: {fileID: 1140588891}
   - component: {fileID: 1140588895}
   - component: {fileID: 1140588890}
+  - component: {fileID: 1140588896}
   m_Layer: 0
   m_Name: PlayerParent
   m_TagString: Player
@@ -845,6 +877,7 @@ Transform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 255808110}
+  - {fileID: 357683508}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -864,6 +897,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1140588896
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1140588889}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad578c05a583bb246b88e3ff10c1eed5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collectibleParent: {fileID: 1287236380}
+  state: 0
 --- !u!1 &1154204704
 GameObject:
   m_ObjectHideFlags: 0
@@ -974,6 +1021,11 @@ PrefabInstance:
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d1751a837317f9f4bb064f44679ea390, type: 3}
   m_PrefabInstance: {fileID: 567096471}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1287236380 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: bd9f7d455f6c35940a69c67c52cf5fbd, type: 3}
+  m_PrefabInstance: {fileID: 830168537}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1471895153
 PrefabInstance:
@@ -1120,9 +1172,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pools:
-  - tag: Hamur
-    prefab: {fileID: 919132149155446097, guid: 9c7b56ffd286fdb4aa86fe01a1f11704, type: 3}
+  - tag: Dough
+    prefab: {fileID: 7957664187459443969, guid: 77a801029d643144084def7ee29b937c, type: 3}
     size: 20
-  - tag: Ekmek
-    prefab: {fileID: 919132149155446097, guid: 9c7b56ffd286fdb4aa86fe01a1f11704, type: 3}
+  - tag: Bread
+    prefab: {fileID: 7957664187459443969, guid: 77a801029d643144084def7ee29b937c, type: 3}
     size: 20
