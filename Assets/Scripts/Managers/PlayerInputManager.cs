@@ -28,15 +28,16 @@ namespace Managers
             _playerInputs.TouchScreen.Press.canceled += ctx => EndPress(ctx);
         }
 
-        private void EndPress(InputAction.CallbackContext context)
+        private void OnPress(InputAction.CallbackContext context)
         {
             EventManager.Trigger(EventList.OnScreenPress);
         }
-
-        private void OnPress(InputAction.CallbackContext context)
+        private void EndPress(InputAction.CallbackContext context)
         {
             EventManager.Trigger(EventList.OnScreenPressEnded);
         }
+
+        
    
     }
 }
